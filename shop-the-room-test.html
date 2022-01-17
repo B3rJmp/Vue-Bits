@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop The Room Test</title>
+  <style>
+    .parent {
+      position: relative;
+      width: 1000px;
+      height: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      background-color: #F7F6F3;
+      border: 1px solid black;
+      z-index: 999;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+
+    .dot-1 {
+      left: 52.20%;
+      top: 33.03%;
+    }
+
+    .dot-2 {
+      left: 19.33%;
+      top: 20.22%;
+    }
+
+    .dot-3 {
+      left: 80.50%;
+      top: 80.65%;
+    }
+
+    .dot-4 {
+      left: 46.08%;
+      top: 59.57%;
+    }
+
+    body {
+      margin: 0px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <image id="canvas" src="/Users/thane.stevens/Projects/downeasthome/assets/img/home-new/homepage/shop-the-room.png"/>
+    <div id="dot" class="dot dot-1">
+      
+    </div>
+    <div class="dot dot-2">
+      
+    </div>
+    <div class="dot dot-3">
+      
+    </div>
+    <div class="dot dot-4">
+      
+    </div>
+  </div>
+  <h2>
+  X: <span id="clientX"></span>
+  </h2>
+  <h2>
+  Y: <span id="clientY"></span>
+  </h2>
+</body>
+<script>
+  const canvas = document.querySelector('#canvas')
+  const dot = document.getElementById('dot')
+  const printX = document.getElementById('clientX')
+  const printY = document.getElementById('clientY')
+
+  function getCursorPosition(canvas, event) {
+      var rect = canvas.getBoundingClientRect()
+      var x = (((event.clientX - rect.left)/rect.width)*100).toFixed(2)
+      var y = (((event.clientY - rect.top)/rect.height)*100).toFixed(2)
+      /* console.log(((x/rect.width)*100).toFixed(2)) */
+      console.log(x)
+      console.log("x: " + x + " y: " + y)
+      dot.style.left = x + '%';
+      dot.style.top = y + '%';
+      printX.innerText = x + '%'
+      printY.innerText = y + '%'
+  }
+
+
+  canvas.addEventListener('mousedown', function(e) {
+      getCursorPosition(canvas, e)
+  })
+</script>
+</html>
